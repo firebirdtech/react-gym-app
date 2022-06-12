@@ -5,7 +5,8 @@ import HeroBannerImage from '../assets/images/banner.png'
 
 const HeroBanner = () => {
     return (
-        <Box sx={{ mt: { lg: '150px', xs: '70px' }, ml: { sm: '50px' } }} position="relative" p="20px">
+        <Box sx={{ mt: { lg: '150px', xs: '70px' }, ml: { sm: '50px' } }} position="relative" p="20px"
+        mb={30}>
             <Typography color="#FF2625"
                 fontWeight="600"
                 fontSize="26px"
@@ -27,13 +28,18 @@ const HeroBanner = () => {
             <Typography fontSize="22px" lineHeight="35px" mb={2}>
                 Check out the most effective exercises.
             </Typography>
-            <Typography fontSize="200px" lineHeight="35px" mb={2}
+            <Button variant='contained'
+                color="error" href="#exercises"
+                sx={{ backgroundColor: '#ff2625',
+            padding: '15px'}}
+            >
+                Explore Exercises
+            </Button>
+            <Typography fontSize="200px" lineHeight="35px"
             fontWeight={600}
+            mt={10}
             color="#EE2625"
             sx={{
-                position: 'absolute',
-                top: 400,
-                zIndex: -10,
                 opacity: 0.1,
                 display: {
                     md: 'block',
@@ -44,14 +50,8 @@ const HeroBanner = () => {
             >
                 Exercise
             </Typography>
-            <Button variant='contained'
-                color="error" href="#exercises"
-                sx={{ backgroundColor: '#ff2625',
-            padding: '15px'}}
-            >
-                Explore Exercises
-            </Button>
-            <img src={HeroBannerImage} alt="banner" className='hero-banner-img' />
+            <img src={HeroBannerImage} alt="banner" className='hero-banner-img'
+            />
         </Box>
     )
 }
