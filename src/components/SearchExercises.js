@@ -3,6 +3,12 @@ import { Box, Button, Stack, TextField, Typography } from '@mui/material';
 
 const SearchExercises = () => {
   const [text, setText] = useState("")
+  
+  const handleSearch = async () => {
+    if(text) {
+      // const exerciseData = await fetchData();
+    }
+  }
   return (
     <Stack alignItems="center" mt="37px" justifyContent="center" p="20px">
       <Typography fontWeight={700} sx={{
