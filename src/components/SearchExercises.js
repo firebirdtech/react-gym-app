@@ -3,18 +3,25 @@ import { Box, Button, Stack, TextField, Typography } from '@mui/material';
 import { exerciseOptions, fetchData } from '../utils/fetchData';
 import HorizontalScrollbar from './HorizontalScrollbar';
 
-const SearchExercises = ({ setExercise, bodyPart, setBodyPart }) => {
+const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
   const [text, setText] = useState("")
-  const [exercises, setExercises] = useState([])
+  const [exercisesData, setExercisesData] = useState([])
   const [bodyParts, setBodyParts] = useState([])
 
   useEffect(() => {
-    const fetchExercisesData = async () => {
+    const fetchBodyPartData = async () => {
       const bodyPartsData = await fetchData('https://exercisedb.p.rapidapi.com/exercises/bodyPartList', exerciseOptions)
       setBodyParts(['all', ...bodyPartsData])
     }
 
-    fetchExercisesData();
+    const fetchExerciseData = async () => {
+      const exercisesData = await fetchData('https://exercisedb.p.rapidapi.com/exercises', exerciseOptions)
+
+      setExercises(exercisesData)
+    }
+
+    fetchExerciseData();
+    fetchBodyPartData();
   }, [])
 
   const handleSearch = async () => {
@@ -30,8 +37,10 @@ const SearchExercises = ({ setExercise, bodyPart, setBodyPart }) => {
       )
       setText('')
       setExercises(searchedExcercises)
+      window.scrollTo({ top: 1600, left: 100, behavior: 'smooth' })
     }
   }
+
   return (
     <Stack alignItems="center" mt="37px" justifyContent="center" p="20px">
       <Typography fontWeight={700} sx={{

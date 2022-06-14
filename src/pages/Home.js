@@ -6,16 +6,19 @@ import Exercises from '../components/Exercises'
 
 const Home = () => {
   const [bodyPart, setBodyPart] = useState('back')
-  const [exercise, setExercise] = useState([])
+  const [exercises, setExercises] = useState([])
+  console.log(exercises)
   return (
     <Box>
       <HeroBanner />
       <SearchExercises
-        setExercise={setExercise}
+        setExercises={setExercises}
         bodyPart={bodyPart}
         setBodyPart={setBodyPart} />
       <Exercises
-        setExercise bodypart setBodyPart
+        setExercises={setExercises}
+        bodyPart={bodyPart}
+        exercises={exercises}
       />
     </Box>
   )
